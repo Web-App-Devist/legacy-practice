@@ -1,0 +1,16 @@
+2024/09/13-14:32:55.748 22a1d Creating DB /home/sussan/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_app.warp.dev_0.indexeddb.leveldb since it was missing.
+2024/09/13-14:32:55.751 22a1d Reusing MANIFEST /home/sussan/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_app.warp.dev_0.indexeddb.leveldb/MANIFEST-000001
+2024/09/13-14:32:55.761 22a2c Level-0 table #5: started
+2024/09/13-14:32:55.763 22a2c Level-0 table #5: 1308 bytes OK
+2024/09/13-14:32:55.765 22a2c Delete type=0 #3
+2024/09/13-14:32:55.765 22a1e Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/09/13-14:33:57.564 22a1f Level-0 table #7: started
+2024/09/13-14:33:57.574 22a1f Level-0 table #7: 5226 bytes OK
+2024/09/13-14:33:57.575 22a1f Delete type=0 #4
+2024/09/13-14:33:57.576 22a1d Manual compaction at level-0 from '\x00\x04\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/09/13-14:34:37.572 22a1e Compacting 1@1 + 1@2 files
+2024/09/13-14:34:37.574 22a1e Generated table #8@1: 40 keys, 3616 bytes
+2024/09/13-14:34:37.574 22a1e Compacted 1@1 + 1@2 files => 3616 bytes
+2024/09/13-14:34:37.576 22a1e compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/09/13-14:34:37.576 22a1e Delete type=2 #5
+2024/09/13-14:34:37.576 22a1e Delete type=2 #7
