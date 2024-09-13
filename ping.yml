@@ -28,12 +28,18 @@
           - xsel
           - httpie
           - rye
+          - ollama
+          - glow
+          - miller
+          - ouch
+          - rsync
+          - rust-analyzer
         state: present
       become: yes
 
     # - name: Install AUR packages using yay
     #   ansible.builtin.command:
-    #     cmd: yay -Syu --noconfirm yaak-app snapd google-chrome-dev
+    #     cmd: yay -Syu --noconfirm yaak-app snapd google-chrome-dev archivemount
     #   become: no
 
     - name: Install Flatpak applications
@@ -42,6 +48,8 @@
           - io.github.zen_browser.zen
           - com.obsproject.Studio
           - md.obsidian.Obsidian
+          - one.ablaze.floorp
+          - dev.zed.Zed
         state: present
       become: yes
 
