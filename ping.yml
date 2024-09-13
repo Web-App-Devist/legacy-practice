@@ -17,20 +17,31 @@
           - stow
           - zoxide
           - atuin
+          - kitty
+          - fontforge
+          - bat
+          - fd
+          - fzf
+          - nushell
+          - vim-ansible
+          - tmux
+          - xsel
+          - httpie
+          - rye
         state: present
       become: yes
 
     # - name: Install AUR packages using yay
     #   ansible.builtin.command:
-    #     cmd: yay -Syu --noconfirm yaak snapd
+    #     cmd: yay -Syu --noconfirm yaak-app snapd google-chrome-dev
     #   become: no
 
     - name: Install Flatpak applications
       community.general.flatpak:
         name:
-          - com.notesnook.Notesnook
           - io.github.zen_browser.zen
-          - com.spotify.Client
+          - com.obsproject.Studio
+          - md.obsidian.Obsidian
         state: present
       become: yes
 
@@ -38,6 +49,7 @@
       community.general.snap:
         name:
           - code
+          - alacritty
         classic: true
 
     - name: Install snap packages
@@ -45,3 +57,10 @@
         name:
           - pieces-os
           - pieces-for-developers
+          - discord
+          - spotify
+          - notesnook
+          - brave
+          - postman
+          - telegram-desktop
+# posting
