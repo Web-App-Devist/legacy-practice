@@ -1,0 +1,47 @@
+---
+- name: Manage packages on Ubuntu Node
+  hosts: ubuntuNode1
+  gather_facts: false
+  tasks:
+    - name: Install packages using pacman
+      community.general.pacman:
+        name:
+          - flatpak
+          - yay
+          - mpv
+          - ripgrep
+          - ffmpegthumbnailer
+          - mediainfo
+          - wezterm
+          - yazi
+          - stow
+          - zoxide
+          - atuin
+        state: present
+      become: yes
+
+    # - name: Install AUR packages using yay
+    #   ansible.builtin.command:
+    #     cmd: yay -Syu --noconfirm yaak snapd
+    #   become: no
+
+    - name: Install Flatpak applications
+      community.general.flatpak:
+        name:
+          - com.notesnook.Notesnook
+          - io.github.zen_browser.zen
+          - com.spotify.Client
+        state: present
+      become: yes
+
+    - name: Install snap classic packages
+      community.general.snap:
+        name:
+          - code
+        classic: true
+
+    - name: Install snap packages
+      community.general.snap:
+        name:
+          - pieces-os
+          - pieces-for-developers
