@@ -1,0 +1,42 @@
+---
+- name: test
+  hosts: node1
+  gather_facts: false
+  tasks:
+    - name: Install colorls
+      community.general.gem:
+        name: colorls
+      become: true
+
+    - name: Install Powerline10k theme # noqa: latest
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+        depth: 1
+
+    - name: Install Oh My Zsh # noqa: latest
+      ansible.builtin.git:
+        repo: https://github.com/ohmyzsh/ohmyzsh.git
+        dest: ~/.oh-my-zsh
+        depth: 1
+
+    - name: install ruby
+      ansible.builtin.apt:
+        name:
+          - ruby-full
+      become: true
+
+    - name: install thefuck
+      ansible.builtin.pip:
+        name:
+          - thefuck
+
+    # - name: install zoxide
+    #   ansible.builtin.shell:
+    #     cmd: curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+    #   become: true
+    #   register: test
+
+    # - name: test
+    #   ansible.builtin.debug:
+    #     msg: "{{ test.stdout }}"

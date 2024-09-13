@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  # ansible-manager:
+  #   container_name: ansible-manager
+  #   image: ubuntu-ansible
+  #   ports:
+  #     - "2222:22"
+  #   networks:
+  #     - ansible-net
+  #   volumes:
+  #     - ansible-vol:/ansible
+
+  ansible-node1:
+    container_name: ansible-node1
+    image: ubuntu-ssh
+    ports:
+      - "2222:22"
+    networks: 
+      - ansible-net
+    volumes:
+      - ansible-vol:/ansible
+
+  ansible-node2:
+    container_name: ansible-node2
+    image: ubuntu-ssh
+    ports:
+      - "2223:22"
+    networks: 
+      - ansible-net
+    volumes:
+      - ansible-vol:/ansible
+
+
+
+networks:
+  ansible-net:
+
+volumes:
+  ansible-vol:

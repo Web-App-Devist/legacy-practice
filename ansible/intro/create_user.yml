@@ -1,0 +1,9 @@
+---
+- name: Switches
+  hosts: host1
+  gather_facts: false
+  tasks:
+    - name: Create-new-user
+      ansible.builtin.user:
+        name: joe
+      become: true

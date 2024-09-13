@@ -1,0 +1,88 @@
+
+# Use the official image as a parent image
+FROM ubuntu
+
+# Update the system, install OpenSSH Server, and set up users
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y openssh-server && apt-get install -y sudo
+
+# install nano, curl
+RUN apt-get install -y nano curl
+
+# Create user and set password for user and root user
+RUN  useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 ubuntu && \
+    echo 'ubuntu:BuDTuT@143' | chpasswd && \
+    echo 'root:BuDTuT@143' | chpasswd
+
+# Set up configuration for SSH
+RUN mkdir /var/run/sshd && \
+    sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
+    echo "export VISIBLE=now" >> /etc/profile
+
+# navigate to "ubuntu" directory
+WORKDIR /home/ubuntu
+RUN sudo apt-get install software-properties-common -y
+RUN sudo apt-get install build-essential -y
+
+# install python and pip3
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+
+ENV TZ=Asia/Kolkata
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
+# install ansible
+RUN pip3 install ansible
+
+RUN sudo apt-get update
+RUN sudo apt-get install ca-certificates curl
+RUN sudo install -m 0755 -d /etc/apt/keyrings
+RUN sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+RUN sudo chmod a+r /etc/apt/keyrings/docker.asc
+RUN echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+RUN sudo apt-get update -y
+RUN sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+# install neovim
+# Replace with "nightly" for nightly version
+ENV NEO_VERSION=stable  
+ENV NEO_URL="https://github.com/neovim/neovim/releases/download/${NEO_VERSION}/nvim-linux64.tar.gz"
+
+RUN wget ${NEO_URL}
+
+# create .local directory if doesnt exist and extract "nvim-linux64.tar.gz" to .local/nvim
+RUN mkdir -p .local/nvim && tar xvf nvim-linux64.tar.gz
+
+RUN mv nvim-linux64/* /home/ubuntu/.local/nvim/
+
+
+# install git
+RUN sudo add-apt-repository ppa:git-core/ppa -y
+RUN sudo apt-get update -y
+RUN sudo apt-get install -y git
+
+
+# remove nvim-linux64.tar.gz
+RUN rm -rf nvim-linux64.tar.gz nvim-linux64
+
+# install ripgrep
+RUN sudo apt-get install ripgrep -y
+
+# install latest node
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+
+
+# Expose the SSH port
+EXPOSE 22
+
+# Run SSH
+CMD ["/usr/sbin/sshd", "-D"]
+

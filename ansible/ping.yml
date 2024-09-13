@@ -1,0 +1,7 @@
+---
+- name: ping
+  hosts: ubuntuNode1
+  gather_facts: false
+  tasks:
+    - name: test ping
+      ping:

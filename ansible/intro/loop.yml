@@ -1,0 +1,30 @@
+---
+- name: loop and print
+  hosts: host1
+  gather_facts: no
+  tasks:
+    - name: loop and print task
+      debug:
+        msg: "To install: {{ item }}"
+      loop:
+        - apt
+        - yum
+        - pacman
+
+- name: loop and print from vars
+  hosts: host2
+  gather_facts: no
+  vars:
+    packages:
+      - apt
+      - yum
+      - pacman
+  tasks:
+    - name: loop and print from vars task
+      debug:
+        msg: "{{ package }} is available at position {{ index }}"
+      loop: "{{ packages }}"
+      loop_control:
+        index_var: index
+        loop_var: package
+        label: "{{ package }}, {{ index }}"

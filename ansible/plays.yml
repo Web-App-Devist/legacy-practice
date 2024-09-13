@@ -1,0 +1,8 @@
+- name: test
+  hosts: node1
+  gather_facts: false
+  tasks:
+    - name: inatll python using pyenv
+      ansible.builtin.shell:
+        cmd: |
+          /home/linuxbrew/.linuxbrew/bin/pyenv install 3.12

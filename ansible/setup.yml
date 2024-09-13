@@ -1,0 +1,5 @@
+---
+- import_playbook: "./install-lunarvim-prerequisites/install-prerequisites.yml"
+- import_playbook: "./utils/utils.yml"
+- import_playbook: "./install-nvim/install-neovim.yml"
+- import_playbook: './install-nvim/install-lazygit.yml'

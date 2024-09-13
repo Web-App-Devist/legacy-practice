@@ -1,0 +1,8 @@
+---
+- name: ping localhost
+  hosts: group1
+  # gather_facts: no
+  # remote_user: ubuntu
+  tasks:
+  - name: ping localhost task
+    ping:

@@ -1,0 +1,11 @@
+---
+- name: gather facts
+  hosts: group1
+  tasks:
+    - name: gather facts task
+      debug:
+        msg: "Gathered facts: {{ ansible_os_family }}"
+    - name: gather mount info
+      debug:
+        msg: "Gathered facts: {{ ansible_mounts }}"
+      when: ansible_os_family == 'Debian'

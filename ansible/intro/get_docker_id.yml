@@ -1,0 +1,7 @@
+---
+- name: get docker container
+  hosts: group1
+  tasks:
+    - name: get docker container task
+      debug:
+        msg: "Docker container id: {{ ansible_nodename }}"

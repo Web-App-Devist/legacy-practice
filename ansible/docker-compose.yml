@@ -1,0 +1,6 @@
+services:
+  ubuntu-ssh:
+    image: ubuntu-ssh
+    container_name: ansible-node
+    ports:
+      - 2222:22

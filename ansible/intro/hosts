@@ -1,0 +1,4 @@
+[group1]
+host1 ansible_host=localhost ansible_user=ubuntu ansible_port=2222 ansible_password=BuDTuT@143 ansible_ssh_common_args='-o PubkeyAuthentication=no -o StrictHostKeyChecking=no' ansible_become_pass=BuDTuT@143
+host2 ansible_host=localhost ansible_user=ubuntu ansible_port=2223 ansible_password=BuDTuT@143 ansible_ssh_common_args='-o PubkeyAuthentication=no -o StrictHostKeyChecking=no' ansible_become_pass=BuDTuT@143
+
