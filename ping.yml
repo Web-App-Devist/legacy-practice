@@ -7,7 +7,6 @@
       community.general.pacman:
         name:
           - flatpak
-          - yay
           - mpv
           - ripgrep
           - ffmpegthumbnailer
