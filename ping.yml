@@ -40,7 +40,7 @@
 
     # - name: Install AUR packages using yay
     #   ansible.builtin.command:
-    #     cmd: yay -Syu --noconfirm yaak-app snapd google-chrome-dev archivemount neovim-git tabby-bin ruby-colorls
+    #     cmd: yay -Syu --noconfirm yaak-app snapd google-chrome-dev archivemount neovim-git tabby-bin ruby-colorls httpie-desktop-appimage
     #   become: no
 
     - name: Install Flatpak applications
