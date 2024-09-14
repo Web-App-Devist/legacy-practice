@@ -36,6 +36,7 @@
           - rust-analyzer
           - ttyper
           - lazygit
+          - xclip
         state: present
       become: yes
 
