@@ -34,12 +34,13 @@
           - ouch
           - rsync
           - rust-analyzer
+          - ttyper
         state: present
       become: yes
 
     # - name: Install AUR packages using yay
     #   ansible.builtin.command:
-    #     cmd: yay -Syu --noconfirm yaak-app snapd google-chrome-dev archivemount
+    #     cmd: yay -Syu --noconfirm yaak-app snapd google-chrome-dev archivemount neovim-git tabby-bin ruby-colorls
     #   become: no
 
     - name: Install Flatpak applications
@@ -53,12 +54,11 @@
         state: present
       become: yes
 
-    - name: Install snap classic packages
-      community.general.snap:
-        name:
-          - code
-          - alacritty
-        classic: true
+    # - name: Install snap classic packages
+    #   community.general.snap:
+    #     name:
+    #       - code
+    #     classic: true
 
     - name: Install snap packages
       community.general.snap:
