@@ -35,6 +35,7 @@
           - rsync
           - rust-analyzer
           - ttyper
+          - lazygit
         state: present
       become: yes
 
